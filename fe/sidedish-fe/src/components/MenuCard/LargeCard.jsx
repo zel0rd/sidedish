@@ -1,6 +1,7 @@
 import * as style from "./MenuCard.style.jsx"
 
 const LargeCard = ({data}) => {
+    // console.log(data.badge[0])
     return (
         <style.LargeCard className="LargeCard">
             { LargeImg(data.img)}
@@ -9,8 +10,9 @@ const LargeCard = ({data}) => {
             <style.FlexRowContainer>
                 { NpriceCheck(data) }
             </style.FlexRowContainer>
-            <style.FlexRowContainer>
-                { EventPrice()}
+            <style.FlexRowContainer style = {{ margin: "10px" }}>
+                { EventPrice(data) }
+                { LaunchingPrice(data) }
             </style.FlexRowContainer>
         </style.LargeCard>
     )
@@ -71,10 +73,20 @@ const PriceBefore = (price) => {
     )
 }
 
-const EventPrice = () => {
-    return (
-        <style.LargeEventPrice>이벤트 특가</style.LargeEventPrice>
-    )
+const EventPrice = (data) => {
+    if (data.badge && data.badge.includes("이벤트특가")) {
+        return (
+            <style.LargeEventPrice>이벤트특가</style.LargeEventPrice>
+        )
+    }
+}
+
+const LaunchingPrice = (data) => {
+    if (data.badge && data.badge.includes("론칭특가")){
+        return (
+            <style.LargeLaunchingPrice>런칭특가</style.LargeLaunchingPrice>
+        )
+    }
 }
 
 export { LargeCard }

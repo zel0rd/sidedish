@@ -90,23 +90,22 @@ const LargePriceAfter = styled.div`
 const LargeSpeicalPrice = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center; 
+    justify-content: center;
     padding: 4px 16px;
+    width: 97px;
+    height: 28px;
 
     /* Light Blue */
     border-radius: 5px;
     /* text-align:center; */
     color:white;
+    margin-right: 10px;
     
 `
-
 const LargeEventPrice = styled(LargeSpeicalPrice)`
     background-color : #82D32D;
-    width: 97px;
-    height: 28px;
 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
 `
 const LargeLaunchingPrice = styled(LargeSpeicalPrice)`
     background-color : #86C6FF;;
