@@ -101,6 +101,7 @@ const LargeSpeicalPrice = styled.div`
     /* text-align:center; */
     color:white;
     margin-right: 10px;
+    font-weight: bold;
     
 `
 const LargeEventPrice = styled(LargeSpeicalPrice)`
