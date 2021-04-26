@@ -74,19 +74,11 @@ const PriceBefore = (price) => {
 }
 
 const EventPrice = (data) => {
-    if (data.badge && data.badge.includes("이벤트특가")) {
-        return (
-            <style.LargeEventPrice>이벤트특가</style.LargeEventPrice>
-        )
-    }
+    return  (data.badge && data.badge.includes("이벤트특가")) ?  <style.LargeEventPrice>이벤트특가</style.LargeEventPrice> : ""
 }
 
 const LaunchingPrice = (data) => {
-    if (data.badge && data.badge.includes("론칭특가")){
-        return (
-            <style.LargeLaunchingPrice>런칭특가</style.LargeLaunchingPrice>
-        )
-    }
+    return (data.badge && data.badge.includes("론칭특가")) ? <style.LargeLaunchingPrice>런칭특가</style.LargeLaunchingPrice> : ""
 }
 
 export { LargeCard }
