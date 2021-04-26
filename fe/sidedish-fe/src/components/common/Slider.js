@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledSlider = styled.div`
   display: inline-block;
   width: 100%;
+  overflow: hidden;
 `;
 
 const SliderList = styled.ul`
