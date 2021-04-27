@@ -42,6 +42,7 @@ const NavStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 1.5%;
+    cursor:pointer;
 
     &:hover {
         font-weight: bold;

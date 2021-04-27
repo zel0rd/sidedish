@@ -5,9 +5,13 @@ import BestMenuTab from "./BestMenuTab"
 import useFetchData from "../../util/hooks/useFetchData.js"
 import { FlexRowContainer } from "../common/FlexContainer.jsx";
 import { LargeCard } from "../MenuCard/LargeCard";
+import MenuDetailModal from "../MenuDetailModal/MenuDetailModal.js"
 
 const BestMenu = () => {
   const [index, setIndex] = useState(0)
+  const [modalProps, setModalProps] = useState();
+  const [showModal, setShowModal] = useState(false);
+
   const url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best"
   const { response } = useFetchData(url, {});
 
@@ -28,15 +32,22 @@ const BestMenu = () => {
   }
   
   const renderLargeCard = () => {
-    return response.body[index].items.map(v => <LargeCard data={v} onClick={onClick} />);
+    return response.body[index].items.map(v => <LargeCard data={v} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
   }
 
-  const onClick = () => {
-    console.log("Clicked")
+  const handleClickCard = (modalProps) => {
+    setShowModal(true);
+    setModalProps({ ...modalProps, onClickCloseBtn: handleClickCloseBtn });
   }
+
+  const handleClickCloseBtn = () => {
+    setShowModal(false);
+  }
+
 
   return (
     <div>
+      {showModal && <MenuDetailModal {...modalProps}/>}
       <style.BestMenuTitle>{BestMenuStatic.Title}</style.BestMenuTitle>
       <FlexRowContainer>
         { response && renderTabTitles() }
