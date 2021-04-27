@@ -5,7 +5,7 @@ import SmallInfoContainer from './SmallInfoContainer.js';
 import Counter from './Counter.js';
 
 const StyledOrderInfo = styled.div`
-  flex: 0 0 53%;
+  /* flex: 0 0 53%; */
   box-sizing: border-box;
   text-align: left;
 
@@ -17,6 +17,7 @@ const StyledOrderInfo = styled.div`
     color: #333333;
     font-size: 22px;
     line-height: 28px;
+    margin-bottom: 16px;
   }
 
   .product-desc {

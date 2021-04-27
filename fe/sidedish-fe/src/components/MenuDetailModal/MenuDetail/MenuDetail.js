@@ -13,6 +13,7 @@ const StyledMenuDetail = styled.div`
   background-color: #FFFFFF;
   border-radius: 5px;
   pointer-events: auto;
+  overflow: hidden;
   
   .upper-cont {
     flex: 6.5;
