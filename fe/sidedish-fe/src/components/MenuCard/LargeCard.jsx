@@ -20,7 +20,9 @@ const LargeCard = ({data,onClick}) => {
 const HoverDiv = () => {
     return (
         <style.HoverStyle>
-
+            <div>새벽배송</div>
+            <div style={{ margin:"16px 0", backgroundColor:"white", height:"1px", width:"89px"}}></div>
+            <div>전국택배</div>
         </style.HoverStyle>
     )
 }
@@ -57,10 +59,6 @@ const InfoContents = (text) => {
             {text}
         </style.LargeInfoContents>
     )
-}
-
-const handleImgMouseHover = ({target}) => {
-    console.log({target})
 }
 
 const LargeImg = (url) => {

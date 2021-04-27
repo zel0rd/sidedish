@@ -139,6 +139,20 @@ const FlexRowContainer = styled.div`
 const HoverStyle =  styled.div` 
     opacity: 0%;
     position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    /* text-align:center; */
+
     top:0px;
     left:0;
     width:100%;
@@ -147,6 +161,17 @@ const HoverStyle =  styled.div`
     :hover{
         opacity: 100%;
     }
+`
+
+const HoverContents = styled.div`
+    /* display: flex; */
+    /* margin:  0 auto; */
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    text-align:center;
 `
 
 export {
@@ -169,4 +194,5 @@ export {
     LargeLaunchingPrice,
     FlexRowContainer,
     HoverStyle,
+    HoverContents,
 }
