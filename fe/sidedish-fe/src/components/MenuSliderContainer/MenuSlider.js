@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import useFetch from '../../util/hooks/useFetchData.js';
+import useFetchData from '../../util/hooks/useFetchData.js';
 import Slider from '../common/Slider.js';
 import LeftBtn from '../common/button/LeftBtn.js';
 import RightBtn from '../common/button/RightBtn.js';
@@ -22,7 +22,7 @@ const StyledMenuSlider = styled.div`
 `;
 
 function MenuSlider({ url, title }) {
-  // const { response } = useFetch(url, {});
+  // const { response } = useFetchData(url, {});
   const sliderRef = useRef();
   const [disableLeftBtn, setDisableLeftBtn] = useState();
   const [disableRightBtn, setDisableRightBtn] = useState();
@@ -51,11 +51,11 @@ function MenuSlider({ url, title }) {
     <StyledMenuSlider>
       <div className="title">{title}</div>
       <LeftBtn 
-        style={{ position: "absolute", top: "10%", left: "0" }}
+        style={{ position: "absolute", top: "60%", left: "-3%" }}
         disabled={disableLeftBtn}
         onClick={handleClickLeftBtn}/>
       <RightBtn
-        style={{ position: "absolute", top: "10%", right: "0" }}
+        style={{ position: "absolute", top: "60%", right: "-3%" }}
         disabled={disableRightBtn}
         onClick={handleClickRightBtn}/>
       {response &&
