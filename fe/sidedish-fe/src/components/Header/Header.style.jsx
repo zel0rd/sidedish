@@ -88,7 +88,7 @@ const LoginStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 6%;
-    width: 60px;
+    width: 62px;
     background-color: transparent;
     border:none;
 `
@@ -97,7 +97,7 @@ const BasketStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 0;
-    width: 75px;
+    width: 80px;
     background-color: transparent;
     border:none;
 `
