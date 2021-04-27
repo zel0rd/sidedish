@@ -1,24 +1,22 @@
 import styled from "styled-components";
 
-const SmallCard = styled.div`
-    width:160px;
-    /* height:540px; */
-    /* margin-left:5%; */
+const Card = styled.div`
     text-align:left;
+    cursor: pointer;
+`
+const SmallCard = styled(Card)`
+    width:160px;
+    height:270px;
 `
 
-const LargeCard = styled.div`
-    width:384px;
-    height:540px;
-    text-align:left;
-    /* &.LargeCard {
-        margin:2.5% 24px;
-    } */
-`
-const MiddleCard = styled.div`
+const MiddleCard = styled(Card)`
     width:308px;
     height:456px;
-    text-align:left;
+`
+
+const LargeCard = styled(Card)`
+    width:384px;
+    height:540px;
 `
 
 const Img = styled.img`
@@ -139,6 +137,20 @@ const FlexRowContainer = styled.div`
 const HoverStyle =  styled.div` 
     opacity: 0%;
     position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    /* text-align:center; */
+
     top:0px;
     left:0;
     width:100%;
@@ -147,6 +159,17 @@ const HoverStyle =  styled.div`
     :hover{
         opacity: 100%;
     }
+`
+
+const HoverContents = styled.div`
+    /* display: flex; */
+    /* margin:  0 auto; */
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    text-align:center;
 `
 
 export {
@@ -169,4 +192,5 @@ export {
     LargeLaunchingPrice,
     FlexRowContainer,
     HoverStyle,
+    HoverContents,
 }
