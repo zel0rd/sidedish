@@ -22,6 +22,7 @@ const SeeMoreBtn = styled.button`
   font-size: 18px;
   line-height: 26px;
   color: #333333;
+  cursor: pointer;
 
   &:hover {
     background-color: #dddddd;

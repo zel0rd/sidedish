@@ -70,7 +70,7 @@ function MenuSlider({ url, title }) {
         key={idx}
         className="slider-item"
         data={data}
-        onClick={() => handleClickMenuCard({ hash: data.detail_hash, titla: data.title })}
+        onClick={() => handleClickMenuCard({ hash: data.detail_hash, title: data.title })}
       />
     );
   };
