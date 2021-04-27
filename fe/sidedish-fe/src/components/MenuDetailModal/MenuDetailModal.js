@@ -3,9 +3,11 @@ import useFetchData from '../../util/hooks/useFetchData.js';
 import Global from '../../util/Global.js';
 import Modal from '../common/Modal.js';
 import MenuDetail from './MenuDetail/MenuDetail.js';
+import ModalCloseBtn from '../common/button/ModalCloseBtn.js';
+import { FlexRowContainer } from '../MenuCard/MenuCard.style.jsx';
 
 // FIXME
-function MenuDetailModal({ hash = "HDF4C", title = "[소중한식사] 경상도 한상차림" }) {
+function MenuDetailModal({ hash = "HDF4C", title = "[소중한식사] 경상도 한상차림", onClickCloseBtn }) {
   // const { response } = useFetchData(Global.getServerUrl() + '/detail/' + hash, {});
   const response = {
     "hash": "H9881",
@@ -43,7 +45,12 @@ function MenuDetailModal({ hash = "HDF4C", title = "[소중한식사] 경상도 
 
   return (
     <Modal>
-      {response && <MenuDetail data={{ ...response.data, title }}/>}
+      {response &&
+        <div style={{ display: "flex", alignItems: "flex-start" }}>
+          <MenuDetail data={{ ...response.data, title }}/>
+          <ModalCloseBtn onClick={onClickCloseBtn}/>
+        </div>
+      }
     </Modal>
   )
 };

@@ -4,15 +4,15 @@ import useFetchData from "../../util/hooks/useFetchData.js";
 import Slider from "../common/Slider.js";
 import LeftBtn from "../common/button/LeftBtn.js";
 import RightBtn from "../common/button/RightBtn.js";
-// import { SmallCard } from '../MenuCard/SmallCard.jsx'; // FIXME
 import { MiddleCard } from "../MenuCard/MiddleCard.jsx";
+import MenuDetailModal from '../MenuDetailModal/MenuDetailModal.js';
 
 const StyledMenuSlider = styled.div`
   width: 100%;
   margin-top: 32px;
   position: relative;
 
-  .title {
+  > .title {
     margin: 32px 0;
     float: left;
     font-weight: 800;
@@ -22,11 +22,25 @@ const StyledMenuSlider = styled.div`
   }
 `;
 
+const _LeftBtnStyle = {
+  position: "absolute", 
+  top: "60%",
+  left: "-3%"
+};
+
+const _RightBtnStyle = {
+  position: "absolute",
+  top: "60%",
+  right: "-3%"
+}
+
 function MenuSlider({ url, title }) {
   // const { response } = useFetchData(url, {});
-  const sliderRef = useRef();
+  const [showModal, setShowModal] = useState(false);
+  const [modalProps, setModalProps] = useState();
   const [disableLeftBtn, setDisableLeftBtn] = useState();
   const [disableRightBtn, setDisableRightBtn] = useState();
+  const sliderRef = useRef();
 
   const handleSlide = () => {
     setDisableLeftBtn(!sliderRef.current.slidableToLeft());
@@ -41,22 +55,37 @@ function MenuSlider({ url, title }) {
     sliderRef.current.slideToRight();
   };
 
+  const handleClickMenuCard = (modalProps) => {
+    setShowModal(true);
+    setModalProps({ ...modalProps, onClickCloseBtn: handleClickCloseBtn });
+  }
+
+  const handleClickCloseBtn = () => {
+    setShowModal(false);
+  }
+
   const renderItems = () => {
-    return response.map((data, idx) => {
-      return <MiddleCard key={idx} data={data} />;
-    });
+    return response.map((data, idx) =>
+      <MiddleCard
+        key={idx}
+        className="slider-item"
+        data={data}
+        onClick={() => handleClickMenuCard({ hash: data.detail_hash, titla: data.title })}
+      />
+    );
   };
 
   return (
     <StyledMenuSlider>
+      {showModal && <MenuDetailModal {...modalProps}/>}
       <div className="title">{title}</div>
       <LeftBtn
-        style={{ position: "absolute", top: "60%", left: "-3%" }}
+        style={_LeftBtnStyle}
         disabled={disableLeftBtn}
         onClick={handleClickLeftBtn}
       />
       <RightBtn
-        style={{ position: "absolute", top: "60%", right: "-3%" }}
+        style={_RightBtnStyle}
         disabled={disableRightBtn}
         onClick={handleClickRightBtn}
       />
