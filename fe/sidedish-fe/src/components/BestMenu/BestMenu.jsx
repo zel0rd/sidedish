@@ -34,12 +34,14 @@ const BestMenu = () => {
   return (
     <div>
       <style.BestMenuTitle>{BestMenuStatic.Title}</style.BestMenuTitle>
-      <FlexRowContainer >
+      <FlexRowContainer>
         { response && renderTabTitles() }
       </FlexRowContainer>
       <style.BestMenuTabInfo>
-        <FlexRowContainer style = {{ justifyContent : "space-between" }}>  
+        <FlexRowContainer>  
+          <div style={{ margin:"40px", display:"flex", justifyContent:"space-between", width:"100%"}}>
           { response && renderLargeCard() }
+          </div>
         </FlexRowContainer>
       </style.BestMenuTabInfo>
       <div className="BestMenuContents"></div>
