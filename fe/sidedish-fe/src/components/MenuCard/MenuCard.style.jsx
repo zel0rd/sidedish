@@ -15,6 +15,12 @@ const LargeCard = styled.div`
         margin:2.5% 24px;
     }
 `
+const MiddleCard = styled.div`
+    width:308px;
+    height:456px;
+    text-align:left;
+`
+
 const Img = styled.img`
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -26,6 +32,13 @@ const SmallImg = styled(Img)`
     height:160px;
     margin-bottom: 8px;
 `
+
+const MiddleImg = styled(Img)`
+    width:308px;
+    height:308px;
+    margin-bottom: 16px;
+`
+
 const LargeImg = styled(Img)`
     width:384px;
     height:384px;
@@ -121,8 +134,10 @@ const FlexRowContainer = styled.div`
 
 export {
     SmallCard,
+    MiddleCard,
     LargeCard,
     SmallImg,
+    MiddleImg,
     LargeImg,
     SmallInfoTitle,
     LargeInfoTitle,

@@ -1,19 +1,21 @@
 import * as style from "./MenuCard.style.jsx"
 
-const LargeCard = ({data}) => {
+const MiddleCard = ({data}) => {
+    console.log(data)
+
     return (
-        <style.LargeCard className="LargeCard">
-            { LargeImg(data.img)}
+        <style.MiddleCard className="MiddleCard">
+            <style.MiddleImg url={data.url} />
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
             <style.FlexRowContainer>
                 { NpriceCheck(data) }
             </style.FlexRowContainer>
-            <style.FlexRowContainer style = {{ margin: "10px" }}>
+            <style.FlexRowContainer>
                 { EventPrice(data) }
                 { LaunchingPrice(data) }
             </style.FlexRowContainer>
-        </style.LargeCard>
+        </style.MiddleCard>
     )
 }
 
@@ -50,11 +52,6 @@ const InfoContents = (text) => {
         </style.LargeInfoContents>
     )
 }
-const LargeImg = (url) => {
-    return (
-        <style.LargeImg url={url}/>
-    )    
-}
 
 const PriceAfter = (price) => {
     return (
@@ -80,4 +77,4 @@ const LaunchingPrice = (data) => {
     return (data.badge && data.badge.includes("론칭특가")) ? <style.LargeLaunchingPrice>런칭특가</style.LargeLaunchingPrice> : ""
 }
 
-export { LargeCard }
+export { MiddleCard }
