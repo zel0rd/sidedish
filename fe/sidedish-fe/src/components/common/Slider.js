@@ -15,12 +15,9 @@ const SliderList = styled.ul`
   top: 0;
   left: ${props => props.positionLeft + "px"};
   transition: left 300ms linear;
-  box-shadow: 0 0 0 1px blue inset;
 `;
 
-const SliderListItem = styled.li`
-  
-`;
+const SliderListItem = styled.li``;
 
 const _calcBetweenMargin = ({ itemWidth, sliderWidth, itemCntOnView }) => {
   const totalItemWidthOnView = itemCntOnView * itemWidth;
