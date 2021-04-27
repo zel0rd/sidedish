@@ -7,11 +7,6 @@ const StyledLeftBtn = styled.button`
   padding: 0 6px;
   border: none;
   background-color: transparent;
-  /* position: ${props => props.padding ?? "initial"};
-  top: ${props => props.top ?? "auto"};
-  bottom: ${props => props.bottom ?? "auto"};
-  left: ${props => props.left ?? "auto"};
-  right: ${props => props.right ?? "auto"}; */
 
   &:not(:disabled):hover {
     opacity: 0.7;
@@ -23,9 +18,9 @@ const StyledLeftBtn = styled.button`
   }
 `;
 
-function LeftBtn({ disabled }) {
+function LeftBtn({ style, disabled, onClick }) {
   return (
-    <StyledLeftBtn disabled={disabled}>
+    <StyledLeftBtn style={style} disabled={disabled} onClick={onClick}>
       <img src={disabled ? leftBtnDisabledSvg : leftBtnSvg} alt="left button"/>
     </StyledLeftBtn>
   );
