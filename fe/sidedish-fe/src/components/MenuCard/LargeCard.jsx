@@ -9,7 +9,7 @@ const LargeCard = ({data,onClick}) => {
             <style.FlexRowContainer>
                 { NpriceCheck(data) }
             </style.FlexRowContainer>
-            <style.FlexRowContainer style = {{ margin: "10px" }}>
+            <style.FlexRowContainer>
                 { EventPrice(data) }
                 { LaunchingPrice(data) }
             </style.FlexRowContainer>
