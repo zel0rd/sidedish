@@ -1,24 +1,22 @@
 import styled from "styled-components";
 
-const SmallCard = styled.div`
-    width:160px;
-    /* height:540px; */
-    /* margin-left:5%; */
+const Card = styled.div`
     text-align:left;
+    cursor: pointer;
+`
+const SmallCard = styled(Card)`
+    width:160px;
+    height:270px;
 `
 
-const LargeCard = styled.div`
-    width:384px;
-    height:540px;
-    text-align:left;
-    /* &.LargeCard {
-        margin:2.5% 24px;
-    } */
-`
-const MiddleCard = styled.div`
+const MiddleCard = styled(Card)`
     width:308px;
     height:456px;
-    text-align:left;
+`
+
+const LargeCard = styled(Card)`
+    width:384px;
+    height:540px;
 `
 
 const Img = styled.img`
