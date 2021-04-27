@@ -16,13 +16,9 @@ const LargeCard = styled.div`
     }
 `
 const MiddleCard = styled.div`
-    background-color: blue;
     width:308px;
     height:456px;
     text-align:left;
-    &.MiddleCard {
-        margin:2.5% 24px;
-    }
 `
 
 const Img = styled.img`

@@ -1,7 +1,6 @@
 import * as style from "./MenuCard.style.jsx"
 
 const LargeCard = ({data}) => {
-    // console.log(data.badge[0])
     return (
         <style.LargeCard className="LargeCard">
             { LargeImg(data.img)}

@@ -5,16 +5,16 @@ const MiddleCard = ({data}) => {
 
     return (
         <style.MiddleCard className="MiddleCard">
-            { MiddleImg(data.img)}
-            {/* { InfoTitle(data.title) }
+            <style.MiddleImg url={data.url} />
+            { InfoTitle(data.title) }
             { InfoContents(data.contents)}
             <style.FlexRowContainer>
                 { NpriceCheck(data) }
             </style.FlexRowContainer>
-            <style.FlexRowContainer style = {{ margin: "10px" }}>
+            <style.FlexRowContainer>
                 { EventPrice(data) }
                 { LaunchingPrice(data) }
-            </style.FlexRowContainer> */}
+            </style.FlexRowContainer>
         </style.MiddleCard>
     )
 }
@@ -51,11 +51,6 @@ const InfoContents = (text) => {
             {text}
         </style.LargeInfoContents>
     )
-}
-const MiddleImg = (url) => {
-    return (
-        <style.MiddleImg url={url}/>
-    )    
 }
 
 const PriceAfter = (price) => {

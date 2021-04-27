@@ -42,9 +42,8 @@ function MenuSlider({ url, title }) {
   };
 
   const renderItems = () => {
-    // FIXME
     return response.map((data, idx) => {
-      return <MiddleCard key={idx} />;
+      return <MiddleCard key={idx} data={data} />;
     });
   };
 
