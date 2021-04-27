@@ -1,11 +1,9 @@
 import * as style from "./MenuCard.style.jsx"
 
-const MiddleCard = ({data}) => {
-    console.log(data)
-
+const MiddleCard = ({data, onClick}) => {
     return (
-        <style.MiddleCard className="MiddleCard">
-            <style.MiddleImg url={data.url} />
+        <style.MiddleCard className="MiddleCard" onClick={onClick}>
+            { MiddleImg(data.img) }
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
             <style.FlexRowContainer>
@@ -16,6 +14,27 @@ const MiddleCard = ({data}) => {
                 { LaunchingPrice(data) }
             </style.FlexRowContainer>
         </style.MiddleCard>
+    )
+}
+
+const MiddleImg = (url) => {
+    return (
+        <div style={{ display:"inline-block", position:"relative", marginBottom:"16px", height:"308px"}}>
+            <style.MiddleImg
+                url={url} 
+            >
+            </style.MiddleImg>
+            { HoverDiv() }
+        </div>
+
+    )    
+}
+
+const HoverDiv = () => {
+    return (
+        <style.HoverStyle>
+
+        </style.HoverStyle>
     )
 }
 
@@ -47,9 +66,9 @@ const InfoTitle = (text) => {
 
 const InfoContents = (text) => {
     return (
-        <style.LargeInfoContents>
+        <style.MiddleInfoContents>
             {text}
-        </style.LargeInfoContents>
+        </style.MiddleInfoContents>
     )
 }
 

@@ -1,8 +1,8 @@
 import * as style from "./MenuCard.style.jsx"
 
-const LargeCard = ({data}) => {
+const LargeCard = ({data,onClick}) => {
     return (
-        <style.LargeCard className="LargeCard">
+        <style.LargeCard className="LargeCard" onClick={onClick}>
             { LargeImg(data.img)}
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
@@ -14,6 +14,14 @@ const LargeCard = ({data}) => {
                 { LaunchingPrice(data) }
             </style.FlexRowContainer>
         </style.LargeCard>
+    )
+}
+
+const HoverDiv = () => {
+    return (
+        <style.HoverStyle>
+
+        </style.HoverStyle>
     )
 }
 
@@ -50,9 +58,21 @@ const InfoContents = (text) => {
         </style.LargeInfoContents>
     )
 }
+
+const handleImgMouseHover = ({target}) => {
+    console.log({target})
+}
+
 const LargeImg = (url) => {
     return (
-        <style.LargeImg url={url}/>
+        <div style={{ display:"inline-block", position:"relative", marginBottom:"16px", height:"384px"}}>
+            <style.LargeImg 
+                url={url} 
+            >
+            </style.LargeImg>
+            { HoverDiv() }
+        </div>
+
     )    
 }
 
