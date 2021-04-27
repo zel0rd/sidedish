@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import MenuSlider from './MenuSlider';
 
 const StyledMenuSliderContainer = styled.div`
+  margin-bottom: 60px;
 `;
 
 function MenuSliderContainer({ seeAll }) {

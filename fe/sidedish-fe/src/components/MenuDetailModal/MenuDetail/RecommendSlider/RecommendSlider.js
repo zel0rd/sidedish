@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import Slider from '../../../common/Slider.js';
 // import MenuCard from '../../../MenuCard/MenuCard.js';
