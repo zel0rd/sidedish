@@ -2,7 +2,7 @@ import * as style from "./MenuCard.style.jsx"
 
 const LargeCard = ({data,onClick}) => {
     return (
-        <style.LargeCard className="LargeCard" onClick={onClick}>
+        <style.LargeCard className="LargeCard" onClick={onClick} style={{cursor: "pointer"}}>
             { LargeImg(data.img)}
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}

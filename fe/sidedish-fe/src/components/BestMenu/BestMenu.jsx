@@ -28,7 +28,11 @@ const BestMenu = () => {
   }
   
   const renderLargeCard = () => {
-    return response.body[index].items.map(v => <LargeCard data={v} />);
+    return response.body[index].items.map(v => <LargeCard data={v} onClick={onClick} />);
+  }
+
+  const onClick = () => {
+    console.log("Clicked")
   }
 
   return (
