@@ -1,6 +1,6 @@
 const DropdownItem = (props) => {
     return (
-        <a href="#">{props.content}</a>
+        <a href="#" >{props.content}</a>
     )
 }
 
@@ -20,7 +20,7 @@ const Dropdown = ( props ) => {
     let contents = propsItem[1].contents
     return (
         <div className="dropdown">
-            <button className="dropdown-button">{title}</button>
+            <button className="dropdown-button" style={{ cursor:"pointer"}} >{title}</button>
             <div className="dropdown-content">
                 <DropdownContents contents={contents}>
                 </DropdownContents>

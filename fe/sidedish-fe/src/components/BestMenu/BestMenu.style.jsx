@@ -16,6 +16,7 @@ const BestMenuTabTitle =styled.div`
     line-height: 58px;
     margin-right:8px;
 
+    cursor: pointer;
 
 
     background: #F5F5F7;
