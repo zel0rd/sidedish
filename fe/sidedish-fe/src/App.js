@@ -10,7 +10,7 @@ import { FlexRowContainer } from "./components/common/FlexContainer.jsx";
 import MenuSliderContainer from "./components/MenuSliderContainer/MenuSliderContainer.js";
 
 const SeeMoreBtn = styled.button`
-  width: 1600px;
+  width: 100%;
   height: 90px;
   position: relative;
   padding: 0;
