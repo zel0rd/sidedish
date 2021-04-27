@@ -18,9 +18,9 @@ const StyledRightBtn = styled.button`
   }
 `;
 
-function RightBtn({ disabled }) {
+function RightBtn({ style, disabled, onClick }) {
   return (
-    <StyledRightBtn>
+    <StyledRightBtn style={style} disabled={disabled} onClick={onClick}>
       <img src={disabled ? rightBtnDisabledSvg : rightBtnSvg} alt="right button"/>
     </StyledRightBtn>
   );
