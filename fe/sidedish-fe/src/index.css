@@ -62,8 +62,6 @@ table {
 }
 
 #root {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	width: 1600px;
+  margin: 0 auto;
 }
