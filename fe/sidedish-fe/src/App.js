@@ -38,7 +38,7 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       <div className="App">
         <Header></Header>
         <BestMenu></BestMenu>
@@ -47,7 +47,7 @@ function App() {
       {seeAll || (
         <SeeMoreBtn onClick={handleClickSeeMoreBtn}>모두 펼쳐보기</SeeMoreBtn>
       )}
-    </>
+    </div>
   );
 }
 

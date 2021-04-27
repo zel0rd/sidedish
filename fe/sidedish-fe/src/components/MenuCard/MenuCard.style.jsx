@@ -11,9 +11,9 @@ const LargeCard = styled.div`
     width:384px;
     height:540px;
     text-align:left;
-    &.LargeCard {
+    /* &.LargeCard {
         margin:2.5% 24px;
-    }
+    } */
 `
 const MiddleCard = styled.div`
     width:308px;
@@ -42,7 +42,6 @@ const MiddleImg = styled(Img)`
 const LargeImg = styled(Img)`
     width:384px;
     height:384px;
-    margin-bottom: 16px;
 `
 
 const InfoTitle = styled.div`
@@ -62,13 +61,18 @@ const LargeInfoTitle = styled(InfoTitle)`
     margin-bottom: 8px;
 `
 
-const LargeInfoContents = styled.div`
+const InfoContents = styled.div`
     width:100%;
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    margin-bottom: 16px;
     color: #828282;
+`
+const MiddleInfoContents = styled(InfoContents)`
+    margin-bottom: 8px;
+`
+const LargeInfoContents = styled(InfoContents)`
+    margin-bottom: 16px;
 `
 
 const LargePrice = styled.div`
@@ -132,6 +136,19 @@ const FlexRowContainer = styled.div`
     align-items: baseline;
 `
 
+const HoverStyle =  styled.div` 
+    opacity: 0%;
+    position: absolute;
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    :hover{
+        opacity: 100%;
+    }
+`
+
 export {
     SmallCard,
     MiddleCard,
@@ -141,6 +158,7 @@ export {
     LargeImg,
     SmallInfoTitle,
     LargeInfoTitle,
+    MiddleInfoContents,
     LargeInfoContents,
     SmallPrice,
     LargePrice,
@@ -150,4 +168,5 @@ export {
     LargeEventPrice,
     LargeLaunchingPrice,
     FlexRowContainer,
+    HoverStyle,
 }

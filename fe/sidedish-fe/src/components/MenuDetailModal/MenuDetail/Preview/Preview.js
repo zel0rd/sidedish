@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import React, { useState, useEffect } from "react";
+import styled from "styled-components";
 
 const StyledPreview = styled.div`
   flex: 0 0 47%;
@@ -44,7 +44,7 @@ const ImgListItem = styled.li`
   }
 
   &.select > img {
-    border: 2px solid #82D32D;
+    border: 2px solid #82d32d;
   }
 
   &:hover {
@@ -54,9 +54,8 @@ const ImgListItem = styled.li`
 
 function Preview({ imgUrls, defaultListSize = 5 }) {
   const [selectedImgIdx, setSelectedImgIdx] = useState(0);
-  
+
   const handleClickImg = ({ target }) => {
-    console.log(selectedImgIdx, target.dataset.idx);
     if (!target.dataset.idx || selectedImgIdx === Number(target.dataset.idx))
       return;
 
@@ -65,31 +64,30 @@ function Preview({ imgUrls, defaultListSize = 5 }) {
 
   const renderImgs = () => {
     // FIXME: modify 'key' not to be 'idx'
-    const imgs = imgUrls.map((url, idx) =>
+    const imgs = imgUrls.map((url, idx) => (
       <ImgListItem
         key={idx}
         data-idx={idx}
-        className={idx === selectedImgIdx ? 'select' : ''}>
-        <img src={url}/>
+        className={idx === selectedImgIdx ? "select" : ""}
+      >
+        <img src={url} />
       </ImgListItem>
-    );
+    ));
 
     let nextIdx = imgs.length;
 
     while (imgs.length < defaultListSize)
-      imgs.push(<ImgListItem key={nextIdx++} className='no-img'/>)
+      imgs.push(<ImgListItem key={nextIdx++} className="no-img" />);
 
     return imgs;
   };
 
   return (
     <StyledPreview>
-      <SelectedImg src={imgUrls[selectedImgIdx]}/>
-      <ImgList onClickCapture={handleClickImg}>
-        {renderImgs()}
-      </ImgList>
+      <SelectedImg src={imgUrls[selectedImgIdx]} />
+      <ImgList onClickCapture={handleClickImg}>{renderImgs()}</ImgList>
     </StyledPreview>
   );
-};
+}
 
 export default Preview;

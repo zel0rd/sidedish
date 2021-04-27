@@ -19,7 +19,7 @@ function Header() {
                     <style.SearchBarStyle>
                     </style.SearchBarStyle>
                     <style.SearchButtonStyle>
-                        <BiSearch size="25px" fill="#BDBDBD"   />
+                        <BiSearch size="25px" fill="#BDBDBD" />
                     </style.SearchButtonStyle>
                 </style.SearchBarFormStyle>
                 <style.LoginStyle>로그인</style.LoginStyle>
