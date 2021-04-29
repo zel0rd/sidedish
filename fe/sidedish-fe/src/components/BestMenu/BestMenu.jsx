@@ -32,7 +32,7 @@ const BestMenu = () => {
   }
   
   const renderLargeCard = () => {
-    return response.body[index].items.map(v => <LargeCard data={v} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
+    return response.body[index].items.map((v,idx) => <LargeCard data={v} key={idx} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
   }
 
   const handleClickCard = (modalProps) => {
