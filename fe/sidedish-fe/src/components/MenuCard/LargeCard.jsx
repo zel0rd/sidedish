@@ -29,6 +29,9 @@ const HoverDiv = () => {
 
 const NpriceCheck = (data) => {
     if(data.n_price){
+        if(!data.n_price.includes("원")) {
+            data.n_price = data.n_price + "원"
+        }
         return (
             <style.FlexRowContainer>
                 { PriceAfter(data.n_price) }

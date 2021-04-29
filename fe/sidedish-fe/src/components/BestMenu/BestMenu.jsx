@@ -17,18 +17,12 @@ const BestMenu = () => {
 
   const renderTabTitles = () => { 
     return response.body.map((v, idx) => {
-        if (index === idx) {
-          return <style.BestMenuTabTitle className="select" key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
-        }
-        else return <style.BestMenuTabTitle  key={idx} data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
+      return <style.BestMenuTabTitle className={ (index===idx ? 'select' : '')} key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
     }); 
   }
 
   const handleCategoryClicked = ({target}) => {
-    if(index === Number(target.dataset.idx)) {
-      return
-    }
-    setIndex(Number(target.dataset.idx))
+    setIndex(target.dataset.idx *= 1)
   }
   
   const renderLargeCard = () => {
