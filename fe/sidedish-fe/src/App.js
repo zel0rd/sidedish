@@ -33,11 +33,10 @@ const SeeMoreBtn = styled.button`
 
 function App() {
   const [seeAll, setSeeAll] = useState(false);
-  const [auth, setAuth] = useState("");
+  const [accessToken, setAccessToken] = useState("");
+  const [userName, setUserName] = useState("");
 
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
+  useEffect(() => {}, []);
 
   const handleClickSeeMoreBtn = () => {
     setSeeAll(true);
@@ -45,10 +44,14 @@ function App() {
 
   const handleOnClick = async (provider) => {
     const res = await socialMediaAuth(provider);
-    setAuth(res);
-    // console.log("app.js res : ", res)
+    setAccessToken(res.credential.accessToken);
+    setUserName(res.additionalUserInfo.username);
   };
 
+  const getStateInfo = () => {
+    console.log(accessToken);
+    console.log(userName);
+  };
   return (
     <div>
       <div className="App">
@@ -59,8 +62,8 @@ function App() {
         <button onClick={() => handleOnClick(googleProvider)}>
           Google Login
         </button>
-        <button onClick={() => console.log(auth)}>Get auth</button>
-        {auth ? <div>로그아웃</div> : <div>로그인</div>}
+        <button onClick={() => getStateInfo()}>내 정보</button>
+        {userName ? <div>{userName}님 안녕하세요 </div> : <div>로그인</div>}
         <BestMenu></BestMenu>
         <MenuSliderContainer seeAll={seeAll} />
       </div>
