@@ -87,8 +87,8 @@ const SearchBarFormStyle = styled.div`
 const LoginStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
-    margin: auto 6%;
-    width: 62px;
+    margin: auto 0;
+    width: 100px;
     background-color: transparent;
     border:none;
 `
@@ -97,7 +97,7 @@ const BasketStyle = styled.button`
     font-size: 16px;
     line-height: 23px;
     margin: auto 0;
-    width: 80px;
+    width: 100px;
     background-color: transparent;
     border:none;
 `

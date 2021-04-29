@@ -52,18 +52,11 @@ function App() {
     console.log(accessToken);
     console.log(userName);
   };
+
   return (
     <div>
       <div className="App">
         <Header></Header>
-        <button onClick={() => handleOnClick(githubProvider)}>
-          Github Login
-        </button>
-        <button onClick={() => handleOnClick(googleProvider)}>
-          Google Login
-        </button>
-        <button onClick={() => getStateInfo()}>내 정보</button>
-        {userName ? <div>{userName}님 안녕하세요 </div> : <div>로그인</div>}
         <BestMenu></BestMenu>
         <MenuSliderContainer seeAll={seeAll} />
       </div>
