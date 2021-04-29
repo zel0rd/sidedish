@@ -42,17 +42,6 @@ function App() {
     setSeeAll(true);
   };
 
-  const handleOnClick = async (provider) => {
-    const res = await socialMediaAuth(provider);
-    setAccessToken(res.credential.accessToken);
-    setUserName(res.additionalUserInfo.username);
-  };
-
-  const getStateInfo = () => {
-    console.log(accessToken);
-    console.log(userName);
-  };
-
   return (
     <div>
       <div className="App">

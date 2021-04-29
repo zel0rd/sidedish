@@ -10,7 +10,6 @@ const socialMediaAuth = async (provider) => {
       return res.user;
     })
     .catch((err) => {
-      console.log("ERROR:", err);
       return err;
     });
   return result;
