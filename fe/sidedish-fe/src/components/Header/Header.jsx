@@ -16,13 +16,16 @@ function Header() {
     useEffect(() => {
         setAccessToken(localStorage.getItem('accessToken'));
         setUserName(localStorage.getItem('userName'));
+        if(localStorage.getItem('userName') === 'undefined' || localStorage.getItem('accessToken') === 'undefined') {
+            localStorage.clear()
+            setAccessToken("")
+            setUserName("")
+        }
     }, []);
     
     const handleOnClick = async (provider) => {
-        console.log(accessToken)
         if(!accessToken) {
             const res = await socialMediaAuth(provider);
-            console.log(res)
             setUserName(res.additionalUserInfo?.username);
             setAccessToken(res.credential?.accessToken);
             localStorage.setItem('userName',res.additionalUserInfo?.username)
@@ -44,7 +47,7 @@ function Header() {
             <style.HeaderRightStyle>
                 <style.BasketStyle>
                     {
-                        (accessToken) ? `${userName}님` : `GUEST`
+                        (accessToken)  ? `${userName}님` : `GUEST`
                     }
                 </style.BasketStyle>
                 <div style={{"width" : "1px", "height":"24px", "margin":"auto 0",backgroundColor : "lightgray"}} />
