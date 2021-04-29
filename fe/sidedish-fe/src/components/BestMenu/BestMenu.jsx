@@ -17,22 +17,16 @@ const BestMenu = () => {
 
   const renderTabTitles = () => { 
     return response.body.map((v, idx) => {
-        if (index === idx) {
-          return <style.BestMenuTabTitle className="select" key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
-        }
-        else return <style.BestMenuTabTitle  key={idx} data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
+      return <style.BestMenuTabTitle className={ (index===idx ? 'select' : '')} key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
     }); 
   }
 
   const handleCategoryClicked = ({target}) => {
-    if(index === Number(target.dataset.idx)) {
-      return
-    }
-    setIndex(Number(target.dataset.idx))
+    setIndex(target.dataset.idx *= 1)
   }
   
   const renderLargeCard = () => {
-    return response.body[index].items.map(v => <LargeCard data={v} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
+    return response.body[index].items.map((v,idx) => <LargeCard data={v} key={idx} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
   }
 
   const handleClickCard = (modalProps) => {
