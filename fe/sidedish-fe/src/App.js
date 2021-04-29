@@ -8,6 +8,8 @@ import { LargeCard } from "./components/MenuCard/LargeCard";
 import { BestMenu } from "./components/BestMenu/BestMenu.jsx";
 import { FlexRowContainer } from "./components/common/FlexContainer.jsx";
 import MenuSliderContainer from "./components/MenuSliderContainer/MenuSliderContainer.js";
+import { githubProvider, googleProvider } from "./config/authMethods";
+import socialMediaAuth from "./service/auth";
 
 const SeeMoreBtn = styled.button`
   width: 100%;
@@ -31,17 +33,34 @@ const SeeMoreBtn = styled.button`
 
 function App() {
   const [seeAll, setSeeAll] = useState(false);
+  const [auth, setAuth] = useState("");
 
-  useEffect(() => {}, [seeAll]);
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
 
   const handleClickSeeMoreBtn = () => {
     setSeeAll(true);
+  };
+
+  const handleOnClick = async (provider) => {
+    const res = await socialMediaAuth(provider);
+    setAuth(res);
+    // console.log("app.js res : ", res)
   };
 
   return (
     <div>
       <div className="App">
         <Header></Header>
+        <button onClick={() => handleOnClick(githubProvider)}>
+          Github Login
+        </button>
+        <button onClick={() => handleOnClick(googleProvider)}>
+          Google Login
+        </button>
+        <button onClick={() => console.log(auth)}>Get auth</button>
+        {auth ? <div>로그아웃</div> : <div>로그인</div>}
         <BestMenu></BestMenu>
         <MenuSliderContainer seeAll={seeAll} />
       </div>
