@@ -6,17 +6,17 @@ import useFetchData from "../../util/hooks/useFetchData.js"
 import { FlexRowContainer } from "../common/FlexContainer.jsx";
 import { LargeCard } from "../MenuCard/LargeCard";
 import MenuDetailModal from "../MenuDetailModal/MenuDetailModal.js"
+import API from "../../util/API.js"
 
 const BestMenu = () => {
   const [index, setIndex] = useState(0)
   const [modalProps, setModalProps] = useState();
   const [showModal, setShowModal] = useState(false);
-
-  const url = "https://h3rb9c0ugl.execute-api.ap-northeast-2.amazonaws.com/develop/baminchan/best"
+  const url = API.GET_BEST
   const { response } = useFetchData(url, {});
 
   const renderTabTitles = () => { 
-    return response.body.map((v, idx) => {
+    return response.map((v, idx) => {
       return <style.BestMenuTabTitle className={ (index===idx ? 'select' : '')} key={idx}  data={v} data-idx={idx} onClick={handleCategoryClicked}>{v.name}</style.BestMenuTabTitle>
     }); 
   }
@@ -26,7 +26,7 @@ const BestMenu = () => {
   }
   
   const renderLargeCard = () => {
-    return response.body[index].items.map((v,idx) => <LargeCard data={v} key={idx} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
+    return response[index].items.map((v,idx) => <LargeCard data={v} key={idx} onClick={() => handleClickCard( { hash:v.detail_hash, title: v.title } ) } />);
   }
 
   const handleClickCard = (modalProps) => {
