@@ -34,8 +34,8 @@ const NpriceCheck = (data) => {
         }
         return (
             <style.FlexRowContainer>
-                { PriceAfter(data.n_price) }
-                { PriceBefore(data.s_price) }
+                { PriceAfter(data.s_price) }
+                { PriceBefore(data.n_price) }
             </style.FlexRowContainer>
         )
     } else {
