@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import Global from '../../../../util/Global.js';
+import useFetchData from '../../../../util/hooks/useFetchData.js';
 import Slider from '../../../common/Slider.js';
-// import MenuCard from '../../../MenuCard/MenuCard.js';
+import { SmallCard } from '../../../MenuCard/SmallCard.jsx';
 
 import leftBtnSvg from '../../../../rsc/svg/leftbtn.svg';
 import rightBtnSvg from '../../../../rsc/svg/rightbtn.svg';
@@ -55,10 +57,11 @@ const TestItem = styled.div`
   border: 1px solid red;
 `;
 
-function RecommendSlider({ data = [0, 1, 2, 3, 4, 5, 6] }) { // FIXME
+function RecommendSlider() {
   const sliderRef = useRef();
   const [disableLeftBtn, setDisableLeftBtn] = useState();
   const [disableRightBtn, setDisableRightBtn] = useState();
+  const { response } = useFetchData(`${Global.getServerUrl()}/recommend`);
 
   const handleSlide = () => {
     setDisableLeftBtn(!sliderRef.current.slidableToLeft());
@@ -74,7 +77,13 @@ function RecommendSlider({ data = [0, 1, 2, 3, 4, 5, 6] }) { // FIXME
   }
 
   const renderItems = () => {
-    return data.map((item) => <TestItem/>); // FIXME
+    return response.map((item) =>
+      <SmallCard
+        key={item.detail_hash}
+        imgUrl={item.image}
+        title={item.title}
+        price={item.s_price}
+      />);
   }
   
   return (
@@ -89,12 +98,14 @@ function RecommendSlider({ data = [0, 1, 2, 3, 4, 5, 6] }) { // FIXME
           <img src={disableRightBtn ? rightBtnDisabledSvg : rightBtnSvg} alt="right button"/>
         </SlideBtn>
       </div>
-      <Slider
-        ref={sliderRef}
-        itemCntOnView={5}
-        items={renderItems()}
-        onSlide={handleSlide}
-        defaultBtn={false}/>
+      {response && 
+        <Slider
+          ref={sliderRef}
+          itemCntOnView={4}
+          items={renderItems()}
+          onSlide={handleSlide}
+          defaultBtn={false}/>
+      }
     </StyledRecommendSlider>
   )
 };

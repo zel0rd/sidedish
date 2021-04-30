@@ -1,20 +1,24 @@
 import styled from "styled-components";
 
-const SmallCard = styled.div`
-    width:160px;
-    /* height:540px; */
-    /* margin-left:5%; */
+const Card = styled.div`
     text-align:left;
+    cursor: pointer;
+`
+const SmallCard = styled(Card)`
+    width:160px;
+    height:270px;
 `
 
-const LargeCard = styled.div`
+const MiddleCard = styled(Card)`
+    width:308px;
+    height:456px;
+`
+
+const LargeCard = styled(Card)`
     width:384px;
     height:540px;
-    text-align:left;
-    &.LargeCard {
-        margin:2.5% 24px;
-    }
 `
+
 const Img = styled.img`
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -26,10 +30,16 @@ const SmallImg = styled(Img)`
     height:160px;
     margin-bottom: 8px;
 `
+
+const MiddleImg = styled(Img)`
+    width:308px;
+    height:308px;
+    margin-bottom: 16px;
+`
+
 const LargeImg = styled(Img)`
     width:384px;
     height:384px;
-    margin-bottom: 16px;
 `
 
 const InfoTitle = styled.div`
@@ -49,13 +59,18 @@ const LargeInfoTitle = styled(InfoTitle)`
     margin-bottom: 8px;
 `
 
-const LargeInfoContents = styled.div`
+const InfoContents = styled.div`
     width:100%;
     font-weight: normal;
     font-size: 14px;
     line-height: 20px;
-    margin-bottom: 16px;
     color: #828282;
+`
+const MiddleInfoContents = styled(InfoContents)`
+    margin-bottom: 8px;
+`
+const LargeInfoContents = styled(InfoContents)`
+    margin-bottom: 16px;
 `
 
 const LargePrice = styled.div`
@@ -90,23 +105,23 @@ const LargePriceAfter = styled.div`
 const LargeSpeicalPrice = styled.div`
     display: flex;
     flex-direction: row;
+    align-items: center; 
+    justify-content: center;
     padding: 4px 16px;
+    width: 97px;
+    height: 28px;
 
     /* Light Blue */
     border-radius: 5px;
     /* text-align:center; */
     color:white;
+    margin-right: 10px;
+    font-weight: bold;
     
 `
-
 const LargeEventPrice = styled(LargeSpeicalPrice)`
     background-color : #82D32D;
-    width: 97px;
-    height: 28px;
 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
 `
 const LargeLaunchingPrice = styled(LargeSpeicalPrice)`
     background-color : #86C6FF;;
@@ -119,13 +134,54 @@ const FlexRowContainer = styled.div`
     align-items: baseline;
 `
 
+const HoverStyle =  styled.div` 
+    opacity: 0%;
+    position: absolute;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    /* text-align:center; */
+
+    top:0px;
+    left:0;
+    width:100%;
+    height:100%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+    :hover{
+        opacity: 100%;
+    }
+`
+
+const HoverContents = styled.div`
+    /* display: flex; */
+    /* margin:  0 auto; */
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 35px;
+    color: #FFFFFF;
+
+    text-align:center;
+`
+
 export {
     SmallCard,
+    MiddleCard,
     LargeCard,
     SmallImg,
+    MiddleImg,
     LargeImg,
     SmallInfoTitle,
     LargeInfoTitle,
+    MiddleInfoContents,
     LargeInfoContents,
     SmallPrice,
     LargePrice,
@@ -135,4 +191,6 @@ export {
     LargeEventPrice,
     LargeLaunchingPrice,
     FlexRowContainer,
+    HoverStyle,
+    HoverContents,
 }

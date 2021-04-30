@@ -13,6 +13,7 @@ const StyledMenuDetail = styled.div`
   background-color: #FFFFFF;
   border-radius: 5px;
   pointer-events: auto;
+  overflow: hidden;
   
   .upper-cont {
     flex: 6.5;
@@ -35,7 +36,7 @@ function MenuDetail({ data }) {
             <OrderInfo data={data}/>
           </div>
           <div className="bottom-cont">
-            <RecommendSlider data={data.detail_section}/>
+            <RecommendSlider/>
           </div>
         </>}
     </StyledMenuDetail>

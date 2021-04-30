@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const StyledSlider = styled.div`
   display: inline-block;
   width: 100%;
+  overflow: hidden;
 `;
 
 const SliderList = styled.ul`
@@ -14,12 +15,9 @@ const SliderList = styled.ul`
   top: 0;
   left: ${props => props.positionLeft + "px"};
   transition: left 300ms linear;
-  box-shadow: 0 0 0 1px blue inset;
 `;
 
-const SliderListItem = styled.li`
-  
-`;
+const SliderListItem = styled.li``;
 
 const _calcBetweenMargin = ({ itemWidth, sliderWidth, itemCntOnView }) => {
   const totalItemWidthOnView = itemCntOnView * itemWidth;
@@ -43,31 +41,42 @@ function Slider({ itemCntOnView, items, onSlide, defaultBtn = true, pageable = f
   const [betweenMargin, setBetweenMargin] = useState();
   const [currPage, setCurrPage] = useState(1);
   const [totalPage] = useState(Math.ceil(items.length / itemCntOnView));
+
   const styledRef = useRef();
   const itemRef = useRef();
+  const [sliderWidth, setSliderWidth] = useState();
+  const [itemWidth, setItemWidth] = useState();
 
   useEffect(() => {
+    setSliderWidth(styledRef.current.offsetWidth);
+    setItemWidth(itemRef.current.offsetWidth);
+  }, []);
+
+  useEffect(() => {
+    if (sliderWidth === undefined || itemWidth === undefined)
+      return;
+
     const newBetweenMargin = _calcBetweenMargin({
-      itemWidth: itemRef.current.offsetWidth,
-      sliderWidth: styledRef.current.offsetWidth,
+      itemWidth,
+      sliderWidth,
       itemCntOnView
     });
     const newTotalWidth = _calcTotalWidth({
-      itemWidth: itemRef.current.offsetWidth,
+      itemWidth,
       itemLength: items.length,
       betweenMargin: newBetweenMargin
     });
 
     setBetweenMargin(newBetweenMargin);
     setTotalWidth(newTotalWidth);
-  }, []);
+  }, [sliderWidth, itemWidth]);
 
   useEffect(() => {
     if (currIdx === undefined || betweenMargin === undefined)
       return;
     
     const newPositionLeft = _calcPositionLeft({
-      itemWidth: itemRef.current.offsetWidth,
+      itemWidth,
       currIdx,
       betweenMargin
     });
