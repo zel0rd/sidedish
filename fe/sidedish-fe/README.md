@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# SideDish 프로젝트 - ( Neis, Young)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Demo
 
-## Available Scripts
+![](../img/sidedish.gif)
 
-In the project directory, you can run:
+## 기획서 분석
 
-### `npm start`
+![](../img/api.png)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Architecture (last updated: 2021-04-23)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![](../img/arc.png)
 
-### `npm test`
+## Github project
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [https://github.com/zel0rd/sidedish/projects/1#card-59405951](https://github.com/zel0rd/sidedish/projects/1#card-59405951)
 
-### `npm run build`
+### slider 컴포넌트 설계
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Case1
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![](../img/com1.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Case2
 
-### `npm run eject`
+![](../img/com2.png)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Case1**와 **Case2**의 경우처럼 슬라이드하는(왼쪽, 오른쪽) 버튼을 라이브러리 사용자가 커스터마이즈할 수 있도록 구현할 것이다. 이로 인해 `useImperativeHandle()`과 `forwardRef()` 의 사용은 불가피할 것으로 보인다.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+부모의 사이즈, 한 아이템의 사이즈, 한 번에 보여질 아이템 수(`itemCntOnView`)를 고려하여, 부모의 사이즈에 `itemCntOnView`만큼의 아이템이 균등하게 퍼져서 보일 수 있도록 구현하였음.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### **Parameter**
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- `itemCntOnView`: 한 번에 보여질 아이템의 개수
+  - TODO: 1일 경우에 대한 구현
+- `items`: 아이템 컴포넌트 배열
+- `defaultBtn`(미구현):
+  - _boolean_
+  - 커스터마이즈 버튼을 사용할 지에 대한 여부
+- `pageable`(미구현):
+  - _boolean_
+  - 페이지 표시 여부 (현재 페이지, 총 페이지)
+  - `itemCntOnView` 로 아이템 컴포넌트의 수가 나눠떨어지지 않을 때 처리를 어떻게 할 것인가?
+    - 나머지 아이템들이 하나의 페이지를 차지할 것인지에 대한 여부
 
-## Learn More
+## 구현사항
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![](../img/feature.png)
