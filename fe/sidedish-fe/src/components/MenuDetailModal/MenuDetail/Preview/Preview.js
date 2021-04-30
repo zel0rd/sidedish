@@ -64,15 +64,14 @@ function Preview({ imgUrls, defaultListSize = 5 }) {
 
   const renderImgs = () => {
     // FIXME: modify 'key' not to be 'idx'
-    const imgs = imgUrls.map((url, idx) => (
+    const imgs = imgUrls.slice(0, defaultListSize).map((url, idx) =>
       <ImgListItem
         key={idx}
         data-idx={idx}
-        className={idx === selectedImgIdx ? "select" : ""}
-      >
+        className={idx === selectedImgIdx ? "select" : ""}>
         <img src={url} />
       </ImgListItem>
-    ));
+    );
 
     let nextIdx = imgs.length;
 
