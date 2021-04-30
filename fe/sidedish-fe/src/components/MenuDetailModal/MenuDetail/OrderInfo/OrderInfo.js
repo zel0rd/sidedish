@@ -101,7 +101,7 @@ const _extractOnlyPrice = (str) => {
 };
 
 function OrderInfo({ data }) {
-  const [price, setPrice] = useState(data.prices[1]);
+  const [price] = useState(_extractOnlyPrice(data.prices[1]));
   const [totalPrice, setTotalPrice] = useState(data.prices[1]);
 
   const handleChangeCount = (count) => {
