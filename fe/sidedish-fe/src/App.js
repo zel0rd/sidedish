@@ -8,6 +8,8 @@ import { LargeCard } from "./components/MenuCard/LargeCard";
 import { BestMenu } from "./components/BestMenu/BestMenu.jsx";
 import { FlexRowContainer } from "./components/common/FlexContainer.jsx";
 import MenuSliderContainer from "./components/MenuSliderContainer/MenuSliderContainer.js";
+import { githubProvider, googleProvider } from "./config/authMethods";
+import socialMediaAuth from "./service/auth";
 
 const SeeMoreBtn = styled.button`
   width: 100%;
@@ -31,8 +33,10 @@ const SeeMoreBtn = styled.button`
 
 function App() {
   const [seeAll, setSeeAll] = useState(false);
+  const [accessToken, setAccessToken] = useState("");
+  const [userName, setUserName] = useState("");
 
-  useEffect(() => {}, [seeAll]);
+  useEffect(() => {}, []);
 
   const handleClickSeeMoreBtn = () => {
     setSeeAll(true);

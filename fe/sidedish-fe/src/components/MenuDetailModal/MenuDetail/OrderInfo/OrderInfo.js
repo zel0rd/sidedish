@@ -96,12 +96,16 @@ const OrderBtn = styled.button`
   background-color: #82D32D;
 `;
 
+const _extractOnlyPrice = (str) => {
+  return str?.match(/[0-9]*/g).join('');
+}
+
 function OrderInfo({ data }) {
-  const priceRef = useRef(data.prices[1].match(/[0-9]*/g).join(''));
-  const [totalPrice, setTotalPrice] = useState(data.prices[1]);
+  const [price, setPrice] = useState(_extractOnlyPrice(data.prices[1]) ?? _extractOnlyPrice(data.prices[0]));
+  const [totalPrice, setTotalPrice] = useState(data.prices[1] ?? data.prices[1]);
 
   const handleChangeCount = (count) => {
-    setTotalPrice((priceRef.current * count).toLocaleString({ type: 'currency' }) + '원');
+    setTotalPrice((price * count).toLocaleString({ type: 'currency' }) + '원');
   }
 
   const getSmallInfosData = () => {
@@ -119,8 +123,13 @@ function OrderInfo({ data }) {
       <div className="product-desc">{data.product_description}</div>
       <div className="price-cont">
         <EventSpecialBadge/>
-        <div className="discounted">{data.prices[1]}</div>
-        <div className="original">{data.prices[0]}</div>
+        {data[1] ?
+          <>
+            <div className="discounted">{data.prices[1]}</div>
+            <div className="original">{data.prices[0]}</div>
+          </> :
+          <div className="discounted">{data.prices[0]}</div>
+        }
       </div>
       <div className="line"/>
       <SmallInfoContainer data={getSmallInfosData()}/>

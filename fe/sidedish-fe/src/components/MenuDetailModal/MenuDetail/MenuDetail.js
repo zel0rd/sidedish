@@ -36,7 +36,7 @@ function MenuDetail({ data }) {
             <OrderInfo data={data}/>
           </div>
           <div className="bottom-cont">
-            <RecommendSlider data={data.detail_section}/>
+            <RecommendSlider/>
           </div>
         </>}
     </StyledMenuDetail>

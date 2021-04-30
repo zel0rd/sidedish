@@ -20,12 +20,12 @@ const SmallPrice = (text) => {
     )
 }
 
-const SmallCard = () => {
+const SmallCard = ({ imgUrl, title, price }) => {
     return(
         <style.SmallCard>
-            { SmallImg("https://lh3.googleusercontent.com/proxy/f5a7tQjvzAtHwGMeCKrr-uPr-dyfo5rvTvTzGSykCEHQNrZIiTOQpaBfVeWtGO3md9hwZqPWhQO0SYNTPg9uVngUUHshhQ8ux1erGG651zlFEW_Z0NxjWg3tHkm6bOTeGcWvPDoCp2Z-te5-0WA8SOqC-dnEzWhe9Sc686_U3Dw")}
-            { SmallInfoTitle("[마샐미디쉬] 유자소스 연근무침 250g") }
-            { SmallPrice("6,500원")}
+            { SmallImg(imgUrl)}
+            { SmallInfoTitle(title) }
+            { SmallPrice(price)}
         </style.SmallCard>
     )
 }
