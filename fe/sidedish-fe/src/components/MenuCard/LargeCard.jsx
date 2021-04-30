@@ -3,7 +3,7 @@ import * as style from "./MenuCard.style.jsx"
 const LargeCard = ({data,onClick}) => {
     return (
         <style.LargeCard className="LargeCard" onClick={onClick}>
-            { LargeImg(data.img)}
+            { LargeImg(data.image)}
             { InfoTitle(data.title) }
             { InfoContents(data.contents)}
             <style.FlexRowContainer>
@@ -28,24 +28,21 @@ const HoverDiv = () => {
 }
 
 const NpriceCheck = (data) => {
-    if(data.n_price){
-        if(!data.n_price.includes("원")) {
-            data.n_price = data.n_price + "원"
-        }
+    if(data.n_price === "0원"){
         return (
             <style.FlexRowContainer>
-                { PriceAfter(data.n_price) }
-                { PriceBefore(data.s_price) }
+                { PriceAfter(data.s_price) }
+                {/* { PriceBefore(data.n_price) } */}
             </style.FlexRowContainer>
         )
     } else {
         return (
             <style.FlexRowContainer>
                 { PriceAfter(data.s_price) }
+                { PriceBefore(data.n_price) }
             </style.FlexRowContainer>
         )
     }
-
 }
 
 const InfoTitle = (text) => {

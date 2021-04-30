@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { EventSpecialBadge } from '../../../common/badge.js';
-import SmallInfoContainer from './SmallInfoContainer.js';
-import Counter from './Counter.js';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { EventSpecialBadge } from "../../../common/badge.js";
+import SmallInfoContainer from "./SmallInfoContainer.js";
+import Counter from "./Counter.js";
 
 const StyledOrderInfo = styled.div`
   /* flex: 0 0 53%; */
@@ -52,7 +52,7 @@ const StyledOrderInfo = styled.div`
   .line {
     width: 100%;
     height: 1px;
-    background-color: #E0E0E0;
+    background-color: #e0e0e0;
   }
 
   .counter-cont {
@@ -90,62 +90,63 @@ const OrderBtn = styled.button`
   line-height: 26px;
   font-size: 18px;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #ffffff;
   border: none;
   border-radius: 5px;
-  background-color: #82D32D;
+  background-color: #82d32d;
 `;
 
 const _extractOnlyPrice = (str) => {
-  return str?.match(/[0-9]*/g).join('');
-}
+  return str?.match(/[0-9]*/g).join("");
+};
 
 function OrderInfo({ data }) {
-  const [price, setPrice] = useState(_extractOnlyPrice(data.prices[1]) ?? _extractOnlyPrice(data.prices[0]));
-  const [totalPrice, setTotalPrice] = useState(data.prices[1] ?? data.prices[1]);
+  const [price, setPrice] = useState(data.prices[1]);
+  const [totalPrice, setTotalPrice] = useState(data.prices[1]);
 
   const handleChangeCount = (count) => {
-    setTotalPrice((price * count).toLocaleString({ type: 'currency' }) + '원');
-  }
+    setTotalPrice((price * count).toLocaleString({ type: "currency" }) + "원");
+  };
 
   const getSmallInfosData = () => {
     // FIXME: is there a better way?
     return [
-      ['포인트', data.point],
-      ['배송정보', data.delivery_info],
-      ['배송비', data.delivery_fee],
+      ["포인트", data.point],
+      ["배송정보", data.delivery_info],
+      ["배송비", data.delivery_fee],
     ];
-  }
-  
+  };
+
   return (
     <StyledOrderInfo>
       <div className="title">{data.title}</div>
       <div className="product-desc">{data.product_description}</div>
       <div className="price-cont">
-        <EventSpecialBadge/>
-        {data[1] ?
+        <EventSpecialBadge />
+        {data.prices[0] === "0원" ? (
+          <div className="original">{data.prices[1]}</div>
+        ) : (
           <>
             <div className="discounted">{data.prices[1]}</div>
             <div className="original">{data.prices[0]}</div>
-          </> :
-          <div className="discounted">{data.prices[0]}</div>
-        }
+          </>
+        )}
       </div>
-      <div className="line"/>
-      <SmallInfoContainer data={getSmallInfosData()}/>
-      <div className="line"/>
+      <div className="line" />
+      <SmallInfoContainer data={getSmallInfosData()} />
+      <div className="line" />
       <div className="counter-cont">
         수량
-        <Counter onChangeCount={handleChangeCount}/>
+        <Counter onChangeCount={handleChangeCount} />
       </div>
-      <div className="line"/>
+      <div className="line" />
       <div className="totalprice-cont">
         총 주문금액
         <span className="totalprice">{totalPrice}</span>
       </div>
       <OrderBtn className="order-btn">주문하기</OrderBtn>
     </StyledOrderInfo>
-  )
+  );
 }
 
 export default OrderInfo;
