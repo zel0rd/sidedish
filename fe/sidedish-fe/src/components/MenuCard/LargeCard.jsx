@@ -27,6 +27,7 @@ const HoverDiv = () => {
     )
 }
 
+<<<<<<< Updated upstream
 const NpriceCheck = (data) => {
     if(data.n_price){
         if(!data.n_price.includes("원")) {
@@ -36,12 +37,25 @@ const NpriceCheck = (data) => {
             <style.FlexRowContainer>
                 { PriceAfter(data.n_price) }
                 { PriceBefore(data.s_price) }
+=======
+const NpriceCheck = ({n_price, s_price}) => {
+    if(n_price === "0원"){
+        return (
+            <style.FlexRowContainer>
+                { PriceAfter(s_price) }
+                {/* { PriceBefore(data.n_price) } */}
+>>>>>>> Stashed changes
             </style.FlexRowContainer>
         )
     } else {
         return (
             <style.FlexRowContainer>
+<<<<<<< Updated upstream
                 { PriceAfter(data.s_price) }
+=======
+                { PriceAfter(s_price) }
+                { PriceBefore(n_price) }
+>>>>>>> Stashed changes
             </style.FlexRowContainer>
         )
     }

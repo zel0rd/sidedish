@@ -1,8 +1,8 @@
 const BestMenuTab = ( props ) => {
     const Items = Object.values(props)[0]
-    const renderItems = () => Items.map((v) => {
+    const renderItems = () => Items.map(({cateId}) => {
         return (
-            <div key={v.cateId}></div>
+            <div key={cateId}></div>
         )
     })
     return (
